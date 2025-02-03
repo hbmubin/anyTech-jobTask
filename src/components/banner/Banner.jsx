@@ -7,6 +7,7 @@ import desktop4 from "../../assets/banner/WaveLinesDesktop4.svg";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import useGetWidth from "../../hooks/useGetWidth";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 
 const Banner = () => {
@@ -35,7 +36,7 @@ const Banner = () => {
         </div>
         <div className="absolute lg:block hidden right-0 top-0 -z-10 ">
           <figure className=" flex justify-end ">
-            <img className="xl:w-[1136px] lg:w-[1020px] xl:-top-5 xl:-right-3 lg:top-5 lg:-right-48 relative " src={bannerImg} alt="banner-img" />
+            <LazyLoadImage className="xl:w-[1136px] lg:w-[1020px] xl:-top-5 xl:-right-3 lg:top-5 lg:-right-48 relative " src={bannerImg} alt="banner-img" />
             <div className="absolute xl:-top-20 lg:-top-32 -right-50 w-[600px] h-72 bg-gradient-to-b rotate-[20deg] from-[#1F80F0] via-[#1f80f082]  to-transparent"></div>
             <div className="absolute xl:-top-20 lg:-top-32 -right-50 w-[600px] h-72 bg-gradient-to-b rotate-[20deg] from-[#1F80F0] via-[#1F80F0]  to-transparent"></div>
           </figure>
@@ -55,7 +56,7 @@ const Banner = () => {
       </div>
       <div className="lg:hidden block overflow-hidden relative right-0 res-banner-img -top-[102px]  -mb-[102px]">
         <figure className="">
-          <img className=" " src={bannerImgRes} alt="banner-img" />
+          <LazyLoadImage className=" " src={bannerImgRes} alt="banner-img" />
         </figure>
       </div>
     </section>

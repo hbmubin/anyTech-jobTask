@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { useEffect, useRef, useState } from "react";
 import useGetWidth from "../../hooks/useGetWidth";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const slideData = [
   {
@@ -101,7 +102,7 @@ const Slider = () => {
                 <h6 className="default-subTitle text-blueLight md:mb-8 mb-4">{data.sub}</h6>
                 <h2 className="md:text-[40px] text-2xl leading-[120%] font-semibold font-montserrat text-blueDeep">{data.title}</h2>
                 <figure className="lg:hidden block mt-8 aspect-video">
-                  <img className="rounded-[20px] size-full object-top object-cover" src={data.img} alt={data.title} />
+                  <LazyLoadImage className="rounded-[20px] size-full object-top object-cover" src={data.img} alt={data.title} />
                 </figure>
                 <div className="mt-8">
                   <p className={`default-para text-blueMedium`}>{data.id != 4 ? <strong>{data.des.strong}</strong> : data.des.strong}</p>
@@ -109,7 +110,7 @@ const Slider = () => {
                 </div>
               </header>
               <figure className="lg:block hidden">
-                <img className="rounded-[20px] size-full object-cover" src={data.img} alt={data.title} />
+                <LazyLoadImage className="rounded-[20px] size-full object-cover" src={data.img} alt={data.title} />
               </figure>
             </article>
           </SwiperSlide>

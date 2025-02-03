@@ -5,6 +5,7 @@ import fr2 from "../../assets/finace/foreground2.png";
 import bank from "../../assets/finace/0f6c8e3f8d16b88978823d82126b03593266eb79-116x115.svg";
 import card from "../../assets/finace/c544c6e75349fb440fc0938052f9288519c87bec-74x75.svg";
 import trade from "../../assets/finace/f034c835798f95c1ce84f9c34ba48682b6383d06-89x88.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const Finance = () => {
   return (
     <section className="pt-[62px]">
@@ -17,7 +18,7 @@ const Finance = () => {
           <div className=" w-full grid place-items-center lg:hidden">
             <div className=" pt-[60px] pb-8 px-14 relative">
               <figure className="trade-img-shadow">
-                <img className="w-full max-w-[318px]" src={financeImg} alt="finance-img" />
+                <LazyLoadImage className="w-full max-w-[318px]" src={financeImg} alt="finance-img" />
               </figure>
               <figure className="absolute top-[24%] right-[0%] w-[26%] ">
               <img className="w-full" src={bank} alt="" />
@@ -53,7 +54,7 @@ const Finance = () => {
         <div className="relative lg:block hidden">
           <div className="flex justify-center">
             <figure className="trade-img-shadow">
-              <img className="xl:w-[428px] lg:w-[370px]" src={financeImg} alt="finance-img" />
+              <LazyLoadImage className="xl:w-[428px] lg:w-[370px]" src={financeImg} alt="finance-img" />
             </figure>
           </div>
           <figure className="absolute top-12 xl:right-2 right-0">
