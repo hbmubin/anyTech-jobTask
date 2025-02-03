@@ -13,8 +13,9 @@ const Home = () => {
             <Finance />
             <Bottom />
             <Philosophy />
+            <div className="md:hidden"><Bottom /></div>
             <Technology />
-            <Bottom />
+            <div className="md:my-0 my-16"><Bottom /></div>
             <Partner />
             <Contact />
         </main>

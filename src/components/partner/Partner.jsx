@@ -14,6 +14,9 @@ import partner13 from "../../assets/partner/partner13.png";
 import partner14 from "../../assets/partner/partner14.png";
 import partner15 from "../../assets/partner/partner15.png";
 import { useRef, useState } from "react";
+import PartnerSlider from "./PartnerSlider";
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
 
 const partners = [
   {
@@ -93,75 +96,89 @@ const partners = [
   },
 ];
 
+
+
 const Partner = () => {
-    const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState({ show: false, text: "", x: 0, y: 0 });
   const timeoutRef = useRef(null);
   const positionRef = useRef({ x: 0, y: 0 });
+  const [counerOn, setCounterOn] = useState(false)
+  const [hasCounted, setHasCounted] = useState(false);
   return (
-    <section>
+    <ScrollTrigger onEnter={() => {
+        if (!hasCounted) {
+          setCounterOn(true);
+          setHasCounted(true);
+        }
+      }} onExit={()=>setCounterOn(false)}>
+        <section>
       <div className="default-container">
         <h6 className="default-subTitle text-blueLight text-center">TRUSTED BY THE BEST</h6>
-        <div className="items-center justify-between flex mx-28 mt-8">
-          <div className="flex items-center border-dashed flex-col">
-            <h2 className="text-[96px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
-              &gt;<span>20</span>
+        <div className="items-center justify-between flex xl:mx-28 mt-8 lg:flex-row flex-col">
+          <div className="flex items-center border-dashed border-b-blue-200 lg:border-b-0 border-b lg:flex-col flex-row w-full lg:justify-start justify-between lg:pb-0 pb-4">
+            <h2 className="lg:text-[96px] text-[64px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
+              &gt;<span>{counerOn ? <CountUp start={0} delay={0} end={20} duration={2} /> : '20'}</span>
             </h2>
-            <p className="text-right text-[#151D2F] lg:text-center text-lg mt-[19px]">Years of Experience</p>
+            <p className="text-right text-[#151D2F] lg:text-center lg:text-lg text-base lg:font-normal font-semibold lg:mt-[19px]">Years of Experience</p>
           </div>
-          <div className="flex items-center border-dashed flex-col">
-            <h2 className="text-[96px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
-              <span>40</span>+
+          <div className="flex items-center border-dashed border-b-blue-200 lg:border-b-0 border-b lg:flex-col flex-row w-full lg:justify-start justify-between lg:mt-0 mt-6 lg:pb-0 pb-4">
+            <h2 className="lg:text-[96px] text-[64px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
+              <span>{counerOn ? <CountUp start={0} delay={0} end={40} duration={2} /> : '40'}</span>+
             </h2>
-            <p className="text-right text-[#151D2F] lg:text-center text-lg mt-[19px]">Financial Institutions</p>
+            <p className="text-right text-[#151D2F] lg:text-center lg:text-lg text-base lg:font-normal font-semibold lg:mt-[19px]">Financial Institutions</p>
           </div>
-          <div className="flex items-center border-dashed flex-col">
-            <h2 className="text-[96px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
-              &gt;<span>200</span>m
+          <div className="flex items-center border-dashed border-b-blue-200 lg:border-b-0 border-b lg:flex-col flex-row w-full lg:justify-start justify-between lg:mt-0 mt-6 lg:pb-0 pb-4">
+            <h2 className="lg:text-[96px] text-[64px] font-Montserrat tracking-[-0.02em] font-semibold leading-none bg-gradient-to-b from-[#065EC4] to-[#0057BB] text-transparent bg-clip-text">
+              &gt;<span>{counerOn ? <CountUp start={0} delay={0} end={200} duration={2} /> : '200'}</span>m
             </h2>
-            <p className="text-right text-[#151D2F] lg:text-center text-lg mt-[19px]">Customers Each</p>
+            <p className="text-right text-[#151D2F] lg:text-center lg:text-lg text-base lg:font-normal font-semibold lg:mt-[19px]">Customers Each</p>
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-x-16 gap-y-[34px] mt-32 relative">
-      {partners.map((p) => (
-        <figure
-          key={p.id}
-          className="grid place-items-center relative"
-          onMouseMove={(e) => {
-            positionRef.current = { x: e.clientX, y: e.clientY }; 
-          }}
-          onMouseEnter={(e) => {
-            timeoutRef.current = setTimeout(() => {
-              setTooltip({
-                show: true,
-                text: p.title,
-                x: positionRef.current.x, 
-                y: positionRef.current.y, 
-              });
-            }, 1000); 
-          }}
-          onMouseLeave={() => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-            setTooltip({ show: false, text: "", x: 0, y: 0 });
-          }}
-        >
-          <img src={p.img} alt={p.title} />
-        </figure>
-      ))}
+        <div className="md:grid hidden lg:grid-cols-5 grid-cols-3 gap-x-16 gap-y-[34px] mt-32 relative">
+          {partners.map((p) => (
+            <figure
+              key={p.id}
+              className="grid place-items-center relative"
+              onMouseMove={(e) => {
+                positionRef.current = { x: e.clientX, y: e.clientY };
+              }}
+              onMouseEnter={(e) => {
+                timeoutRef.current = setTimeout(() => {
+                  setTooltip({
+                    show: true,
+                    text: p.title,
+                    x: positionRef.current.x,
+                    y: positionRef.current.y,
+                  });
+                }, 1000);
+              }}
+              onMouseLeave={() => {
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                setTooltip({ show: false, text: "", x: 0, y: 0 });
+              }}
+            >
+              <img src={p.img} alt={p.title} />
+            </figure>
+          ))}
 
-      {tooltip.show && (
-        <div
-          className="fixed bg-black text-neutral-100 text-xs font-light px-2 py-1 pointer-events-none transition-opacity duration-200 border border-neutral-500"
-          style={{
-            top: tooltip.y + 15, 
-            left: tooltip.x + 10, 
-          }}
-        >
-          {tooltip.text}
+          {tooltip.show && (
+            <div
+              className="fixed bg-black text-neutral-100 text-xs font-light px-2 py-1 pointer-events-none transition-opacity duration-200 border border-neutral-500"
+              style={{
+                top: tooltip.y + 15,
+                left: tooltip.x + 10,
+              }}
+            >
+              {tooltip.text}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </div>
+      <div className="md:hidden block">
+        <PartnerSlider />
       </div>
     </section>
+    </ScrollTrigger>
   );
 };
 

@@ -11,50 +11,71 @@
   --font-montserrat:  "Montserrat", serif;
 }
 
+
 body{
   font-family: "Inter", serif;
 }
 .default-container{
-  @apply container mx-auto w-full xl:max-w-[1200px] sm:px-[30px]
+  @apply container mx-auto w-full xl:max-w-[1200px] lg:px-[30px] px-8
 }
 .default-heading{
-  @apply font-montserrat font-semibold text-[80px] leading-[115%] tracking-tight
+  @apply font-montserrat font-semibold lg:text-[80px] text-[56px] leading-[115%] tracking-tight
 }
 .default-subTitle{
-  @apply font-bold leading-6 tracking-[2.56px] text-base font-montserrat uppercase
+  @apply font-bold leading-6 tracking-[2.56px] lg:text-base text-xs font-montserrat uppercase
 }
 .default-title{
-@apply font-semibold leading-[62px] text-[56px] font-montserrat
+@apply font-semibold lg:leading-[62px] leading-[130%] lg:text-[56px] text-[32px] font-montserrat
 }
 .default-para{
-  @apply  text-base leading-[160%]
+  @apply  lg:text-base text-sm leading-[160%]
 }
 .default-cardTitle{
-  @apply font-montserrat text-2xl leading-[130%] font-semibold text-blueDeep
+  @apply font-montserrat md:text-2xl text-lg leading-[130%] font-semibold text-blueDeep
+}
+.btn-shadow {
+  box-shadow: 0px 3px 5px 0px rgba(16, 62, 117, .37);
+  animation-duration: .2s;
+}
+.btn-amber:hover {
+  box-shadow: 0px 4px 3px 0px rgba(16, 61, 117, 0.548);
+  animation-duration: .2s;
 }
 .top-triangle {
-  width: 78.5%;
-  height: 100%;
-  clip-path: polygon(0 0, 100% 0, 47% 100%, 0% 100%);
-  @apply bg-gradient-to-b from-[#005BC4] via-[#005BC4] to-[#12ABED];
+  @apply bg-gradient-to-bl from-[#005BC4] via-[#005BC4] to-[#12ABED] h-full w-full;
+}
+.top-triangle-xl{
+  clip-path: polygon(0 0, 100% 0, 862px 100%, 0% 100%);
+}
+.top-triangle-lg{
+  clip-path: polygon(0 0, 100% 0, 60% 100%, 0% 100%);
+}
+.top-triangle-md{
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
 }
 .bottom-triangle {
   width: 100%;
-  height: 90px;
+  @apply xl:h-[120px] lg:h-[48px];
   background-color: #fff;
   clip-path: polygon(100% 0, 100% 100%, 0% 100%);
 }
 .bottom-corner {
-  width: 180px;
-  height: 180px;
+  @apply xl:size-[206px] lg:size-[90px];
   background-color: #005BC4;
   clip-path: polygon(100% 4%, 0% 100%, 100% 100%);
+}
+.res-banner-img{
+  clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
 }
 .trade-img-shadow{
   box-shadow: 0px 23px 30px 0px #16437763;
 }
- .swiper{
+ .techno-slider{
   filter: drop-shadow(rgba(207, 233, 247, 0.47) 0px 16px 21px);
+}
+.techno-slider .swiper-pagination{
+  position: relative;
+  bottom: -5px !important;
 }
 .contact-triangle {
   width: 100%;
@@ -62,3 +83,40 @@ body{
   clip-path: polygon(0 0, 100% 260px, 100% 100%, 0% 100%);
   background: radial-gradient(24.45% 88.58% at 23.57% 2%, #00e9ea 0%, #1f80f0 52.08%, #005bc4 100%);
 }
+.contact-triangle-xl {
+  clip-path: polygon(0 0, 100% 260px, 100% 100%, 0% 100%);
+}
+.contact-triangle-lg {
+  clip-path: polygon(0 0, 100% 156px, 100% 100%, 0% 100%);
+}
+.contact-triangle-md {
+  clip-path: polygon(0 0, 100% 90px, 100% 100%, 0% 100%);
+}
+
+.element {
+  transition: transform 5s ease-in-out;
+}
+
+.element.leaving {
+  transition: transform 2s ease-in-out;
+  transform: translateY(-100%);
+}
+.res-menu-open{
+  @apply -translate-x-full;
+  /* transition-duration: 0.1s !important; */
+}
+.res-menu-close{
+  @apply translate-x-0;
+  /* transition-duration: 0.1s !important; */
+}
+.transition-width {
+  overflow: hidden;
+  width: 0;
+  /* transition: width 0.3s ease-in-out; */
+}
+
+.transition-width.open {
+  width: 180px;
+}
+
+

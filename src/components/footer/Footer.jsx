@@ -1,9 +1,10 @@
+import { FaEnvelope, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import logo from "../../assets/icons/logo-text.png";
 const Footer = () => {
   return (
     <footer>
       <div className="bg-[#002045] py-11 text-white">
-        <div className="default-container flex justify-between items-center">
+        <div className="default-container flex sm:flex-row flex-col sm:gap-0 gap-6 sm:justify-between items-center">
           <a href="/" className="flex items-center">
             <img src={logo} alt="AnyTech" className="object-contain w-[218px]" />
           </a>
@@ -19,11 +20,16 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+          <div className="lg:hidden flex text-blueLight items-center gap-5">
+          <a href="#"><FaLinkedin size={26} /></a>
+          <a href="#"><FaPhoneAlt size={23} /></a>
+          <a href="#"><FaEnvelope size={24} /></a>
+          </div>
         </div>
       </div>
       <div className="w-full border-b border-[#164377]"></div>
       <div className="bg-[#00152D]">
-        <div className="default-container flex items-center justify-between py-6 font-semibold text-blueLight text-xs leading-[160%]">
+        <div className="default-container flex items-center lg:justify-between lg:flex-row flex-col lg:gap-0 gap-6 py-6 font-semibold text-blueLight text-xs leading-[160%]">
           <p className="">
             <strong>©2023 All rights reserved</strong>. Any Technology Pte Ltd.
           </p>

@@ -3,22 +3,25 @@ import philoMobile from "../../assets/image/philo-mobile.png"
 import philo1 from "../../assets/icons/philo-1.png"
 import philo2 from "../../assets/icons/philo-2.png"
 import philo3 from "../../assets/icons/philo-3.png"
+import PhiloSlider from "./PhiloSlider"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 const Philosophy = () => {
     return (
       <section>
-        <div className="default-container pb-[128px]">
+        <div className="default-container pb-16">
           <header className="text-center">
             <h6 className="default-subTitle text-blueLight mb-6">OUR PHILOSOPHY</h6>
             <h2 className="default-title text-blueDeep">Human-centred innovation</h2>
           </header>
           <figure className="sm:block hidden py-8">
-            <img className="w-full" src={philosophy} alt="philosophy" />
+            <LazyLoadImage className="w-full" src={philosophy} alt="philosophy" />
           </figure>
           <figure className="sm:hidden block py-8">
-            <img className="w-full" src={philoMobile} alt="philosophy" />
+            <LazyLoadImage className="w-full" src={philoMobile} alt="philosophy" />
           </figure>
           <div>
-            <ul className="grid grid-cols-3 gap-[30px]">
+            <div className="md:hidden block"><PhiloSlider /></div>
+            <ul className="hidden lg:grid-cols-3 md:grid grid-cols-2 gap-[30px]">
               <li className="p-8 bg-[#F7FBFE] rounded-[20px]">
                 <figure><img src={philo1} alt="philo-icon" /></figure>
                 <h4 className="my-6 default-cardTitle">Full-suite solutions</h4>
